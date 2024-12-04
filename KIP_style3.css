@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+  background-color: #f4f4f4;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('back.jpg');
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgb(0, 0, 0);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.350);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin: 15px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+/* Style umum untuk input dan textarea */
+.input-field input,
+.input-field textarea {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  resize: none;
+}
+
+/* Style khusus untuk elemen select */
+.input-field select {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 5px;
+  cursor: pointer; /* Mengubah kursor saat select diklik */
+}
+
+/* Mengubah warna font saat select dalam keadaan aktif atau fokus */
+.input-field select:focus {
+  color: #ffffff; /* Mengubah teks pilihan menjadi hitam saat fokus */
+}
+
+/* Mengubah warna font pilihan dalam dropdown */
+.input-field select option {
+  color: #000000; /* Mengatur warna teks pilihan menjadi hitam */
+}
+
+
+.input-field textarea {
+  height: 80px;
+  padding-top: 10px;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label,
+.input-field select:focus~label,
+.input-field select:valid~label,
+.input-field textarea:focus~label,
+.input-field textarea:valid~label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.logout-button {
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  background: #ff4d4d;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+.logout-button:hover {
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.15);
+}
+
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-slide {
+  display: none;
+}
+
+.form-slide.active {
+  display: block;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Seleksi Beasiswa KIP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+header {
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+        }
+.cover-box {
+            background: rgba(0, 0, 0, 0.595); /* Kotak semi transparan */
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+/* Footer styles */
+.footer {
+  padding: 64px;
+  text-align: center;
+  opacity: 0.9;
+  background-color: #f1f1f1; /* optional: adjust to fit your theme */
+}
+
+.social-icons {
+  font-size: 32px;
+  padding: 32px 0;
+}
+
+.social-icons i {
+  margin: 0 10px;
+  color: #000;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons i:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* Contact Us Section */
+.contact-us {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.contact-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact-details {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #555;
+}
+
+.contact-details i {
+  margin-right: 10px;
+  color: #007BFF; /* Optional: Change icon color */
+}
+
+
+
+</style>
+</head>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card w3-left-align w3-large" style="color: white; background-color: rgba(0, 0, 0, 0.700);" >
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large" style="color: white; background-color: rgb(0, 0, 0);"  href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="signup3.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" style="color: white; background-color: rgb(0, 0, 0);" >SignUp</a>
+    <a href="login3.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Login</a>
+    <h1 class="w3-bar-item w3-large w3-left">KIPLI (KIP Pilihan)</h1>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">SignUp</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right">Login</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<div class="cover-box">
+  <h1 class="w3-margin w3-jumbo">Halo Selamat Datang di KIPLI</h1>
+  <a href="login3.html" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Mulai</a>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-address-card w3-padding-64 w3-text-black w3-margin-right" style='font-size:200px;color:black' ></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>KIPLI</h1>
+      <h5 class="w3-padding-32">KIPLI atau KIP Pilihan adalah bantuan biaya pendidikan yang diberikan oleh pemerintah kepada mahasiswa yang berasal dari keluarga kurang mampu secara ekonomi namun memiliki prestasi akademik yang baik. Tujuannya adalah untuk memberikan kesempatan kepada semua siswa berprestasi untuk melanjutkan studi ke perguruan tinggi tanpa terhalang oleh kendala finansial.</h5>
+    </div>
+  </div>
+</div>
+
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container w3-light-grey">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1 class="w3-text-dark-grey" style="font-size: 36px;">Cara Penggunaan Sistem</h1>
+      <h5 class="w3-padding-32 w3-text-dark-grey" style="font-size: 22px;">Ikuti langkah-langkah berikut untuk menggunakan sistem ini dengan efektif:</h5>
+      <ul class="w3-ul w3-hoverable" style="font-size: 20px;">
+        <li><strong>Masukkan Data Siswa:</strong> Isi informasi siswa seperti nilai rapor, prestasi akademik, pendapatan orang tua, biaya hidup, dan prestasi non-akademik.</li>
+        <li><strong>Kalkulasi Keputusan:</strong> Pergi ke menu "Analisis keputusan" lalu Klik tombol "Kalkulasi Keputusan" untuk menghitung skor siswa berdasarkan data yang dimasukkan.</li>
+        <li><strong>Lihat Hasil Keputusan:</strong> Sistem akan memberikan status siswa: <strong>Diterima</strong>, atau <strong>Ditolak</strong>.</li>
+      </ul>
+      <p class="w3-text-dark-grey" style="font-size: 20px;">Pastikan data yang dimasukkan akurat untuk hasil yang tepat dan relevan.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-calculator w3-padding-64 w3-text-dark" style="font-size:200px;"></i>
+    </div>
+  </div>
+</div>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1 class="w3-text-dark-grey">Kenapa Memilih Sistem Ini?</h1>
+      <h5 class="w3-padding-32 w3-text-dark-grey">Sistem ini membantu mempermudah pengambilan keputusan berdasarkan kriteria yang objektif. Dengan algoritma yang dirancang secara cermat, Anda akan mendapatkan hasil yang lebih akurat dan transparan.</h5>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-check-circle w3-padding-64 w3-text-green" style="font-size:150px;"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Us Section -->
+<section class="contact-us">
+  <h1 class="contact-title">Contact Us</h1>
+  <div class="contact-details">
+    <p><i class="fa fa-phone"></i> +62 813-7300-5055</p>
+    <p><i class="fa fa-envelope"></i> quenjems22@gmail.com</p>
+    <p><i class="fa fa-map-marker"></i> Jalan Sultan Hasanuddin No. 52, Lubuk Pakam</p>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">  
+  <div class="social-icons">
+    <i class="fa fa-facebook-official"></i>
+    <i class="fa fa-instagram"></i>
+    <i class="fa fa-snapchat"></i>
+    <i class="fa fa-pinterest-p"></i>
+    <i class="fa fa-twitter"></i>
+    <i class="fa fa-linkedin"></i>
+  </div>
+</footer>
+
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>cihuy</title>
+<body>    
+  <button id="hapusDataSiswaBtn">Hapus Data Siswa</button>
+
+<script>
+  document.getElementById('hapusDataSiswaBtn').addEventListener('click', hapusDataSiswa);
+function hapusDataSiswa() {
+  // Ambil semua data dari localStorage
+  const allData = JSON.parse(localStorage.getItem('siswaData')) || [];
+
+  // Konfirmasi sebelum menghapus
+  const confirmHapus = confirm('Apakah Anda yakin ingin menghapus semua data siswa?');
+  if (confirmHapus) {
+    // Hapus hanya data siswa
+    localStorage.removeItem('siswaData');
+    alert('Data siswa berhasil dihapus.');
+    // Refresh halaman untuk memperbarui tampilan tabel
+    location.reload();
+  } else {
+    alert('Penghapusan data dibatalkan.');
+  }
+}
+
+</script>
+</body>
+  

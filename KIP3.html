@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Pendaftaran Beasiswa KIP</title>
+  <link rel="stylesheet" href="KIP_style3.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-card w3-left-align w3-large" style="color: white; background-color: rgba(0, 0, 0, 0.7);">
+    <a href="Halaman_Utama3.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+    <a href="TabelData.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Tabel Data</a>
+    <a href="Spk3.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Daftar Penerima KIP</a>
+    <a href="javascript:void(0);" 
+       class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right logout-button" 
+       style="color: white; background-color: rgb(255, 0, 0);" onclick="logout()">Logout</a>
+  </div>
+</div>
+
+
+
+  <div class="wrapper">
+    <form id="kipForm">
+      <!-- Slide 1: Demografis -->
+      <div class="form-slide active">
+        <h2>Demografis</h2>
+        <div class="input-field">
+          <input type="text" id="nama" name="nama" required>
+          <label for="nama">Nama Siswa</label>
+        </div>
+        <div class="input-field">
+          <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="" disabled selected hidden></option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+          <label for="jenis_kelamin">Jenis Kelamin</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="nisn" name="nisn" required>
+          <label for="nisn">NISN</label>
+        </div>
+        <div class="input-field">
+          <textarea id="alamat" name="alamat" required></textarea>
+          <label for="alamat">Tempat Tinggal/ Alamat Rumah</label>
+        </div>
+      </div>
+      
+      <!-- Slide 2: Akademik -->
+      <div class="form-slide">
+        <h2>Akademik</h2>
+        <div class="input-field">
+          <input type="number" step="0.01" id="nilai_rapor" name="nilai_rapor" required>
+          <label for="nilai_rapor">Nilai Rata-rata Rapor</label>
+        </div>
+        <div class="input-field">
+          <select id="prestasi_akademik" name="prestasi_akademik" required>
+            <option value="" disabled selected hidden></option>
+            <option value="Nasional">Nasional</option>
+            <option value="Provinsi">Provinsi</option>
+            <option value="Kabupaten">Kabupaten</option>
+            <option value="Tidak Ada">Tidak Ada</option>
+          </select>
+          <label for="prestasi_akademik">Prestasi Akademik</label>
+        </div>
+      </div>
+
+      <!-- Slide 3: Ekonomi -->
+      <div class="form-slide">
+        <h2>Ekonomi</h2>
+        <div class="input-field">
+          <input type="number" id="pendapatan_ortu" name="pendapatan_ortu" required>
+          <label for="pendapatan_ortu">Pendapatan Orang Tua (Rp)</label>
+        </div>
+        <div class="input-field">
+          <input type="number" id="biaya_hidup" name="biaya_hidup" required>
+          <label for="biaya_hidup">Biaya Hidup (Rp)</label>
+        </div>
+      </div>
+
+      <!-- Slide 4: Lainnya -->
+      <div class="form-slide">
+        <h2>Lainnya</h2>
+        <div class="input-field">
+          <select id="prestasi_nonakademik" name="prestasi_nonakademik" required>
+            <option value="" disabled selected hidden></option>
+            <option value="Nasional">Nasional</option>
+            <option value="Provinsi">Provinsi</option>
+            <option value="Kabupaten">Kabupaten</option>
+            <option value="Tidak Ada">Tidak Ada</option>
+          </select>
+          <label for="prestasi_nonakademik">Prestasi Non-Akademik</label>
+        </div>
+      </div>
+
+      <div class="form-navigation">
+        <button type="button" id="prevBtn" onclick="changeSlide(-1)" disabled>Previous</button>
+        <button type="button" id="nextBtn" onclick="changeSlide(1)">Next</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.form-slide');
+
+    function showSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').textContent = currentSlide === slides.length - 1 ? 'Submit' : 'Next';
+    }
+
+    function changeSlide(direction) {
+      if (direction === 1 && currentSlide === slides.length - 1) {
+       
+        // Ambil data dari form
+        const formData = {
+          nama: document.getElementById('nama').value,
+          jenis_kelamin: document.getElementById('jenis_kelamin').value,
+          nisn: document.getElementById('nisn').value,
+          alamat: document.getElementById('alamat').value,
+          nilai_rapor: document.getElementById('nilai_rapor').value,
+          prestasi_akademik: document.getElementById('prestasi_akademik').value,
+          pendapatan_ortu: document.getElementById('pendapatan_ortu').value,
+          biaya_hidup: document.getElementById('biaya_hidup').value,
+          prestasi_nonakademik: document.getElementById('prestasi_nonakademik').value
+        };
+
+        // Simpan data ke localStorage
+        let siswaData = JSON.parse(localStorage.getItem('siswaData')) || [];
+        siswaData.push(formData);
+        localStorage.setItem('siswaData', JSON.stringify(siswaData));
+
+        // Redirect ke halaman status
+        window.location.href = 'TabelData.html';
+        return;
+      }
+      if (direction === -1 && currentSlide === 0) return;
+      showSlide(currentSlide + direction);
+    }
+
+    showSlide(currentSlide);
+
+      // Fungsi untuk logout
+  function logout() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      alert('User ' + currentUser + ' telah logout.');
+      localStorage.removeItem('currentUser');
+      window.location.href = 'index.html';
+    } else {
+      alert('Tidak ada user yang login.');
+    }
+  }
+
+  // Menampilkan nama akun yang login di tombol logout
+  window.onload = function () {
+    const currentUser = localStorage.getItem('currentUser');
+    const logoutButton = document.querySelector('.logout-button');
+    if (currentUser) {
+      logoutButton.textContent = 'Logout (' + currentUser + ')';
+    } else {
+      logoutButton.textContent = 'Logout';
+    }
+  }
+  </script>
+</body>
+</html>

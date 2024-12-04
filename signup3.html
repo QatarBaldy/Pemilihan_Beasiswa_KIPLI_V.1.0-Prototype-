@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Sign Up</title>
+  <link rel="stylesheet" href="signup_style3.css">
+</head>
+<body>
+  <div class="wrapper">
+    <form id="signupForm">
+      <h2>Sign Up</h2>
+      <div class="input-field">
+        <input type="text" id="signupName" required>
+        <label>Masukkan Nama</label>
+      </div>
+      <div class="input-field">
+        <input type="email" id="signupEmail" required>
+        <label>Masukkan Email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="signupPassword" required>
+        <label>Masukkan Password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="signupConfirmPassword" required>
+        <label>Konfirmasi Password</label>
+      </div>
+      <button type="submit">Sign Up</button>
+      <div class="register">
+        <p>Sudah punya akun? <a href="login3.html" class="login">Log in</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+      if (password === confirmPassword) {
+        const user = { name, email, password };
+        localStorage.setItem(email, JSON.stringify(user));
+        alert('Pendaftaran berhasil');
+        window.location.href = 'login3.html';
+      } else {
+        alert('Password tidak cocok');
+      }
+    });
+  </script>
+</body>
+</html>

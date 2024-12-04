@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+}
+body{
+  color: #ffffff
+}
+.container{
+  width: 100%;
+  height: 100vh;
+  background-image: url(back.jpg);
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+nav{
+  padding: 10px 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo a{
+  font-size: 40px;
+  text-decoration: none;
+  background: #000000ba;
+  padding: 9px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+span{
+  color: #f9004d;
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  color: #000;
+  text-decoration: none;
+  background: hsl(0, 0%, 0%);
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.5s;
+  margin: 10px 15px;
+}
+
+nav ul li:hover{
+  background: transparent;
+  border: 1px solid #ffffff;
+}
+nav ul li a{
+  text-decoration: none;
+  transition: 0.5s;
+}
+nav ul li a:hover{
+  color: #f9004d;
+  
+}
+.login{
+  background: #000;
+  border-radius: 6px;
+  padding: 9px 25px;
+  text-decoration: none;
+  transition: 0.5s;
+  font-size: 18px;
+  
+}
+.login:hover{
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn{
+  background: #000;
+  border-radius: 6px;
+  padding: 9px 25px;
+  text-decoration: none;
+  transition: 0.5s;
+  font-size: 18px;
+}
+
+.btn:hover{
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;  
+}
+
+.logout-button {
+      position: absolute;
+      top: 3px;
+      right: 0px;
+      background: #ff4d4d;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 14px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    .logout-button:hover {
+      color: #ff4d4d;
+      border-color: #ff4d4d;
+      background: rgba(255, 77, 77, 0.15);
+    }
+
+.content{
+  margin-top: 10%;
+  background: #000000ba;
+  border-radius: 6px;
+  padding: 9px 25px;
+  text-decoration: none;
+  transition: 0.5s;
+  max-width: 600px;
+}
+.content h2{
+  font-size: 60px;
+  color: #fff;
+  transition: 0.5s;
+}
+.content p{
+  margin-top: 10px;
+  line-height: 25px;
+}
+a{
+  color: #fff;
+}
+.link {
+  margin-top: 30px;
+}
+.hire{
+  color: #000;
+  text-decoration: none;
+  background: #fff;
+  padding: 9px 25px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.5s;
+}
+.link .hire:hover{
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Footer styles */
+.footer {
+  padding: 32px;
+  text-align: center;
+  opacity: 0.9;
+  background-color: #f1f1f1; /* optional: adjust to fit your theme */
+}
+
+.social-icons {
+  font-size: 32px;
+  padding: 32px 0;
+}
+
+.social-icons i {
+  margin: 0 10px;
+  color: #000;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons i:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* Contact Us Section */
+.contact-us {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.contact-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact-details {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #555;
+}
+
+.contact-details i {
+  margin-right: 10px;
+  color: #007BFF; /* Optional: Change icon color */
+}
