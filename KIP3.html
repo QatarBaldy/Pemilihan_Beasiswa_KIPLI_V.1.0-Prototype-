@@ -129,6 +129,25 @@
                 alert(`Harap mengisi semua kolom pada bagian ${slides[currentSlide].querySelector('h2').textContent}.`);
                 return;
             }
+            // Validasi khusus untuk input tertentu
+            if (input.id === 'nisn') {
+                if (!validateUniqueNISN(input.value)) {
+                    alert('NISN ini sudah terdaftar. Gunakan NISN yang berbeda.');
+                    return;
+                }
+            } else if (input.id === 'nilai_rapor') {
+                const nilai = parseFloat(input.value);
+                if (nilai < 0 || nilai > 100) {
+                    alert('Nilai rapor harus di antara 0 dan 100.');
+                    return;
+                }
+            } else if (input.id === 'pendapatan_ortu' || input.id === 'biaya_hidup') {
+                const nilai = parseFloat(input.value);
+                if (nilai < 0) {
+                    alert(`${input.labels[0].textContent} tidak boleh bernilai negatif.`);
+                    return;
+                }
+            }
         }
     }
 
@@ -139,10 +158,10 @@
             jenis_kelamin: document.getElementById('jenis_kelamin').value,
             nisn: document.getElementById('nisn').value,
             alamat: document.getElementById('alamat').value,
-            nilai_rapor: document.getElementById('nilai_rapor').value,
+            nilai_rapor: parseFloat(document.getElementById('nilai_rapor').value),
             prestasi_akademik: document.getElementById('prestasi_akademik').value,
-            pendapatan_ortu: document.getElementById('pendapatan_ortu').value,
-            biaya_hidup: document.getElementById('biaya_hidup').value,
+            pendapatan_ortu: parseFloat(document.getElementById('pendapatan_ortu').value),
+            biaya_hidup: parseFloat(document.getElementById('biaya_hidup').value),
             prestasi_nonakademik: document.getElementById('prestasi_nonakademik').value
         };
 
@@ -161,30 +180,37 @@
     showSlide(currentSlide + direction);
 }
 
-    showSlide(currentSlide);
+// Fungsi untuk validasi unik NISN
+function validateUniqueNISN(nisn) {
+    const siswaData = JSON.parse(localStorage.getItem('siswaData')) || [];
+    return !siswaData.some(siswa => siswa.nisn === nisn);
+}
 
-      // Fungsi untuk logout
-  function logout() {
+// Menampilkan slide saat ini
+showSlide(currentSlide);
+
+// Fungsi untuk logout
+function logout() {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
-      alert('User ' + currentUser + ' telah logout.');
-      localStorage.removeItem('currentUser');
-      window.location.href = 'index.html';
+        alert('User ' + currentUser + ' telah logout.');
+        localStorage.removeItem('currentUser');
+        window.location.href = 'index.html';
     } else {
-      alert('Tidak ada user yang login.');
+        alert('Tidak ada user yang login.');
     }
-  }
+}
 
-  // Menampilkan nama akun yang login di tombol logout
-  window.onload = function () {
+// Menampilkan nama akun yang login di tombol logout
+window.onload = function () {
     const currentUser = localStorage.getItem('currentUser');
     const logoutButton = document.querySelector('.logout-button');
     if (currentUser) {
-      logoutButton.textContent = 'Logout (' + currentUser + ')';
+        logoutButton.textContent = 'Logout (' + currentUser + ')';
     } else {
-      logoutButton.textContent = 'Logout';
+        logoutButton.textContent = 'Logout';
     }
-  }
+}
   </script>
 </body>
 </html>
