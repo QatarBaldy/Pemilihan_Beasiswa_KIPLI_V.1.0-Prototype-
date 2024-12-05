@@ -398,35 +398,35 @@
 
 
 <script>
-  // Fungsi untuk logout
-  function logout() {
-    const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
-      alert('User ' + currentUser + ' telah logout.');
-      localStorage.removeItem('currentUser');
-      window.location.href = 'index.html';
-    } else {
-      alert('Tidak ada user yang login.');
-    }
+// Fungsi untuk logout
+function logout() {
+  const currentUser = localStorage.getItem('currentUser');
+  if (currentUser) {
+    alert('User ' + currentUser + ' telah logout.');
+    localStorage.removeItem('currentUser');
+    window.location.href = 'index.html';
+  } else {
+    alert('Tidak ada user yang login.');
   }
+}
 
-  // Menampilkan nama akun yang login di tombol logout
-  window.onload = function () {
-    const currentUser = localStorage.getItem('currentUser');
-    const logoutButton = document.querySelector('.logout-button');
-    if (currentUser) {
-      logoutButton.textContent = 'Logout (' + currentUser + ')';
-    } else {
-      logoutButton.textContent = 'Logout';
-    }
+// Menampilkan nama akun yang login di tombol logout
+window.onload = function () {
+  const currentUser = localStorage.getItem('currentUser');
+  const logoutButton = document.querySelector('.logout-button');
+  if (currentUser) {
+    logoutButton.textContent = 'Logout (' + currentUser + ')';
+  } else {
+    logoutButton.textContent = 'Logout';
   }
+};
 
-  // Menampilkan data siswa dari localStorage
-  const siswaData = JSON.parse(localStorage.getItem('siswaData')) || [];
-  const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-  const noDataText = document.getElementById('noDataText');
+// Menampilkan data siswa dari localStorage
+const siswaData = JSON.parse(localStorage.getItem('siswaData')) || [];
+const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+const noDataText = document.getElementById('noDataText');
 
-  if (siswaData.length > 0) {
+if (siswaData.length > 0) {
   noDataText.style.display = 'none';
   siswaData.forEach((siswa, index) => {
     let row = dataTable.insertRow();
@@ -472,32 +472,65 @@ function editData(index) {
   document.getElementById('modalBackdrop').style.display = 'block';
 }
 
+// Fungsi untuk menyimpan hasil edit data
 function simpanEdit() {
   if (editIndex === -1) return;
 
-  // Ambil nilai dari form edit
-  siswaData[editIndex] = {
-    nama: document.getElementById('editNama').value,
-    jenis_kelamin: document.getElementById('editJenisKelamin').value,
-    nisn: document.getElementById('editNISN').value,
-    alamat: document.getElementById('editAlamat').value,
-    nilai_rapor: document.getElementById('editNilaiRapor').value,
-    prestasi_akademik: document.getElementById('editPrestasiAkademik').value,
-    pendapatan_ortu: document.getElementById('editPendapatanOrtu').value,
-    biaya_hidup: document.getElementById('editBiayaHidup').value,
-    prestasi_nonakademik: document.getElementById('editPrestasiNonAkademik').value,
+  const editedData = {
+    nama: document.getElementById('editNama').value.trim(),
+    jenis_kelamin: document.getElementById('editJenisKelamin').value.trim(),
+    nisn: document.getElementById('editNISN').value.trim(),
+    alamat: document.getElementById('editAlamat').value.trim(),
+    nilai_rapor: parseFloat(document.getElementById('editNilaiRapor').value.trim()),
+    prestasi_akademik: document.getElementById('editPrestasiAkademik').value.trim(),
+    pendapatan_ortu: parseFloat(document.getElementById('editPendapatanOrtu').value.trim()),
+    biaya_hidup: parseFloat(document.getElementById('editBiayaHidup').value.trim()),
+    prestasi_nonakademik: document.getElementById('editPrestasiNonAkademik').value.trim(),
   };
 
-  // Simpan ke localStorage dan perbarui tabel
+  // Validasi data
+  if (!editedData.nama || !editedData.jenis_kelamin || !editedData.nisn || !editedData.alamat ||
+      isNaN(editedData.nilai_rapor) || isNaN(editedData.pendapatan_ortu) || isNaN(editedData.biaya_hidup)) {
+    alert('Harap mengisi semua kolom yang diperlukan.');
+    return;
+  }
+
+  // Validasi NISN unik
+  const isDuplicateNISN = siswaData.some((siswa, index) => siswa.nisn === editedData.nisn && index !== editIndex);
+  if (isDuplicateNISN) {
+    alert('NISN ini sudah digunakan oleh siswa lain. Harap masukkan NISN yang berbeda.');
+    return;
+  }
+
+  // Validasi nilai rapor (0-100)
+  if (editedData.nilai_rapor < 0 || editedData.nilai_rapor > 100) {
+    alert('Nilai rapor harus berada di antara 0 dan 100.');
+    return;
+  }
+
+  // Validasi pendapatan dan biaya hidup tidak negatif
+  if (editedData.pendapatan_ortu < 0 || editedData.biaya_hidup < 0) {
+    alert('Pendapatan orang tua dan biaya hidup tidak boleh bernilai negatif.');
+    return;
+  }
+
+  // Simpan perubahan ke array siswaData
+  siswaData[editIndex] = { ...editedData };
+
+  // Simpan data ke localStorage
   localStorage.setItem('siswaData', JSON.stringify(siswaData));
+
+  // Tutup modal dan perbarui tampilan
+  alert('Data berhasil disimpan!');
+  tutupModal();
   location.reload();
 }
 
+// Fungsi untuk menutup modal
 function tutupModal() {
   document.getElementById('editModal').style.display = 'none';
   document.getElementById('modalBackdrop').style.display = 'none';
 }
-
 
 // Fungsi untuk menghapus data siswa
 function hapusData(index) {
