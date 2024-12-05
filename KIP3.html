@@ -121,19 +121,29 @@
     }
 
     function changeSlide(direction) {
-      if (direction === 1 && currentSlide === slides.length - 1) {
-       
-        // Ambil data dari form
+    // Validasi input sebelum lanjut ke slide berikutnya atau menyimpan data
+    if (direction === 1) {
+        const inputs = slides[currentSlide].querySelectorAll('input, select, textarea');
+        for (let input of inputs) {
+            if (!input.value.trim()) {
+                alert(`Harap mengisi semua kolom pada bagian ${slides[currentSlide].querySelector('h2').textContent}.`);
+                return;
+            }
+        }
+    }
+
+    // Jika sudah di slide terakhir dan klik Next, simpan data
+    if (direction === 1 && currentSlide === slides.length - 1) {
         const formData = {
-          nama: document.getElementById('nama').value,
-          jenis_kelamin: document.getElementById('jenis_kelamin').value,
-          nisn: document.getElementById('nisn').value,
-          alamat: document.getElementById('alamat').value,
-          nilai_rapor: document.getElementById('nilai_rapor').value,
-          prestasi_akademik: document.getElementById('prestasi_akademik').value,
-          pendapatan_ortu: document.getElementById('pendapatan_ortu').value,
-          biaya_hidup: document.getElementById('biaya_hidup').value,
-          prestasi_nonakademik: document.getElementById('prestasi_nonakademik').value
+            nama: document.getElementById('nama').value,
+            jenis_kelamin: document.getElementById('jenis_kelamin').value,
+            nisn: document.getElementById('nisn').value,
+            alamat: document.getElementById('alamat').value,
+            nilai_rapor: document.getElementById('nilai_rapor').value,
+            prestasi_akademik: document.getElementById('prestasi_akademik').value,
+            pendapatan_ortu: document.getElementById('pendapatan_ortu').value,
+            biaya_hidup: document.getElementById('biaya_hidup').value,
+            prestasi_nonakademik: document.getElementById('prestasi_nonakademik').value
         };
 
         // Simpan data ke localStorage
@@ -144,10 +154,12 @@
         // Redirect ke halaman status
         window.location.href = 'TabelData.html';
         return;
-      }
-      if (direction === -1 && currentSlide === 0) return;
-      showSlide(currentSlide + direction);
     }
+
+    // Navigasi slide
+    if (direction === -1 && currentSlide === 0) return;
+    showSlide(currentSlide + direction);
+}
 
     showSlide(currentSlide);
 
